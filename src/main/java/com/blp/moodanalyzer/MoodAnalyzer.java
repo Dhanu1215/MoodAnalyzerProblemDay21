@@ -1,27 +1,54 @@
 package com.blp.moodanalyzer;
 
-public class MoodAnalyzer {
-    public static String message1;
-    public static String message2;
 
-    public MoodAnalyzer(){
+/**
+ * Custom exception-MoodAnalysisException
+ */
+class MoodAnalysisException extends Exception {
+
+}
+
+public class MoodAnalyzer {
+
+    public static String message1;
+    static String mood = null;
+
+    enum position {
+        EMPTY;
     }
-    public MoodAnalyzer(String message1,String message2){
+
+    public MoodAnalyzer() {
+    }
+
+    public MoodAnalyzer(String message1) {
         MoodAnalyzer.message1 = message1;
-        MoodAnalyzer.message2 = message2;
     }
 
     /**
-     * Call method to test the mood
+     * Call method to test the mood and handle exception
      */
     public static String analyzeMood() {
-        MoodAnalyzer md = new MoodAnalyzer("I am in sad mood","I am in HAPPY mood");
-        String mood = null;
-        if (message1.contains("sad")){
-            mood = "SAD";
+
+        MoodAnalyzer md = new MoodAnalyzer("");
+        try {
+            if (message1.length() == 0)
+                throw new MoodAnalysisException();
         }
-        else if (message2.contains("HAPPY")) {
+        catch (MoodAnalysisException e) {
             mood = "HAPPY";
+        }
+        return mood;
+    }
+
+    public static String analyzeMood1() {
+
+        MoodAnalyzer md = new MoodAnalyzer("");
+        try {
+            if (message1.length() == 0)
+                throw new MoodAnalysisException();
+        }
+        catch (MoodAnalysisException e) {
+            mood = String.valueOf(position.EMPTY);
         }
         return mood;
     }
