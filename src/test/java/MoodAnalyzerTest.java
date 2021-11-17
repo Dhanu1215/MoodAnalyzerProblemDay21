@@ -7,6 +7,6 @@ public class MoodAnalyzerTest {
     @Test
     public void analyzeMood() {
         String check = MoodAnalyzer.analyzeMood();
-        Assert.assertEquals("HAPPY", check);
+        Assert.assertEquals("com.blp.moodanalyzer.MoodAnalysisException", check);
     }
 }

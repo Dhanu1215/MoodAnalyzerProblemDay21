@@ -1,9 +1,16 @@
 package com.blp.moodanalyzer;
 
+/**
+ * Custom exception-MoodAnalysisException
+ */
+class MoodAnalysisException extends Exception {
+
+}
+
 public class MoodAnalyzer {
+
     public static String message1;
-
-
+    static String mood = null;
     public MoodAnalyzer() {
     }
 
@@ -19,13 +26,11 @@ public class MoodAnalyzer {
         MoodAnalyzer md = new MoodAnalyzer("");
         try {
             if (message1.length() == 0)
-                throw new NullPointerException();
-            if (message1.contains("sad"))
-                return "SAD";
-            else
-                return "HAPPY";
-        } catch (NullPointerException e) {
-            return "HAPPY";
+                throw new MoodAnalysisException();
         }
+        catch (MoodAnalysisException e) {
+            mood = e.toString();
+        }
+        return mood;
     }
 }
