@@ -2,27 +2,30 @@ package com.blp.moodanalyzer;
 
 public class MoodAnalyzer {
     public static String message1;
-    public static String message2;
 
-    public MoodAnalyzer(){
+
+    public MoodAnalyzer() {
     }
-    public MoodAnalyzer(String message1,String message2){
+
+    public MoodAnalyzer(String message1) {
         MoodAnalyzer.message1 = message1;
-        MoodAnalyzer.message2 = message2;
     }
 
     /**
-     * Call method to test the mood
+     * Call method to test the mood and handle exception
      */
     public static String analyzeMood() {
-        MoodAnalyzer md = new MoodAnalyzer("I am in sad mood","I am in HAPPY mood");
-        String mood = null;
-        if (message1.contains("sad")){
-            mood = "SAD";
+
+        MoodAnalyzer md = new MoodAnalyzer("");
+        try {
+            if (message1.length() == 0)
+                throw new NullPointerException();
+            if (message1.contains("sad"))
+                return "SAD";
+            else
+                return "HAPPY";
+        } catch (NullPointerException e) {
+            return "HAPPY";
         }
-        else if (message2.contains("HAPPY")) {
-            mood = "HAPPY";
-        }
-        return mood;
     }
 }
