@@ -1,5 +1,6 @@
 package com.blp.moodanalyzer;
 
+
 /**
  * Custom exception-MoodAnalysisException
  */
@@ -11,6 +12,11 @@ public class MoodAnalyzer {
 
     public static String message1;
     static String mood = null;
+
+    enum position {
+        EMPTY;
+    }
+
     public MoodAnalyzer() {
     }
 
@@ -29,7 +35,20 @@ public class MoodAnalyzer {
                 throw new MoodAnalysisException();
         }
         catch (MoodAnalysisException e) {
-            mood = e.toString();
+            mood = "HAPPY";
+        }
+        return mood;
+    }
+
+    public static String analyzeMood1() {
+
+        MoodAnalyzer md = new MoodAnalyzer("");
+        try {
+            if (message1.length() == 0)
+                throw new MoodAnalysisException();
+        }
+        catch (MoodAnalysisException e) {
+            mood = String.valueOf(position.EMPTY);
         }
         return mood;
     }

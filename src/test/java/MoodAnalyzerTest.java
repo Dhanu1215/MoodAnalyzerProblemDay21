@@ -9,4 +9,10 @@ public class MoodAnalyzerTest {
         String check = MoodAnalyzer.analyzeMood();
         Assert.assertEquals("com.blp.moodanalyzer.MoodAnalysisException", check);
     }
+    @Test
+    public void analyzeMood1() {
+        String check = MoodAnalyzer.analyzeMood1();
+        Assert.assertEquals("EMPTY", check);
+    }
 }
+
